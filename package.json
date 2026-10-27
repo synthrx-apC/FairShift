@@ -1,39 +1,42 @@
 {
-  "name": "fairshift",
-  "private": true,
-  "version": "1.0.0",
-  "workspaces": [
-    "apps/*",
-    "server",
-    "packages/*"
-  ],
-  "scripts": {
-    "setup": "npm install",
-    "dev": "concurrently -k -n server,worker,admin -c cyan,green,magenta \"npm run dev -w server\" \"npm run dev -w apps/worker\" \"npm run dev -w apps/admin\"",
-    "demo": "npm run seed && npm run dev",
-    "seed": "tsx server/src/seed.ts",
-    "reset": "tsx server/src/seed.ts --reset",
-    "typecheck": "tsc --noEmit -p server/tsconfig.json && tsc --noEmit -p apps/worker/tsconfig.json && tsc --noEmit -p apps/admin/tsconfig.json",
-    "test": "vitest run",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "build": "npm run build -w apps/worker && npm run build -w apps/admin",
-    "evals": "tsx server/src/evals.ts",
-    "e2e": "playwright test"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.0",
-    "concurrently": "^9.1.0",
-    "eslint": "^9.17.0",
-    "prettier": "^3.4.2",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8",
-    "@typescript-eslint/parser": "^8.18.1",
-    "@typescript-eslint/eslint-plugin": "^8.18.1",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-react-refresh": "^0.4.16",
-    "@playwright/test": "^1.55.0",
-    "@axe-core/playwright": "^4.10.2"
-  }
+"name": "fairshift",
+"private": true,
+"version": "1.0.0",
+"workspaces": [
+"apps/*",
+"server",
+"packages/*"
+],
+"overrides": {
+"vite": "6.0.5"
+},
+"scripts": {
+"setup": "npm install",
+"dev": "concurrently -k -n server,worker,admin -c cyan,green,magenta \"npm run dev -w server\" \"npm run dev -w apps/worker\" \"npm run dev -w apps/admin\"",
+"demo": "npm run seed && npm run dev",
+"seed": "tsx server/src/seed.ts",
+"reset": "tsx server/src/seed.ts --reset",
+"typecheck": "tsc --noEmit -p server/tsconfig.json && tsc --noEmit -p apps/worker/tsconfig.json && tsc --noEmit -p apps/admin/tsconfig.json",
+"test": "vitest run",
+"lint": "eslint .",
+"format": "prettier --write .",
+"build": "npm run build -w apps/worker && npm run build -w apps/admin",
+"evals": "tsx server/src/evals.ts",
+"e2e": "playwright test"
+},
+"devDependencies": {
+"@types/node": "^22.10.0",
+"concurrently": "^9.1.0",
+"eslint": "^9.17.0",
+"prettier": "^3.4.2",
+"tsx": "^4.19.2",
+"typescript": "^5.7.2",
+"vitest": "^2.1.8",
+"@typescript-eslint/parser": "^8.18.1",
+"@typescript-eslint/eslint-plugin": "^8.18.1",
+"eslint-plugin-react-hooks": "^5.1.0",
+"eslint-plugin-react-refresh": "^0.4.16",
+"@playwright/test": "^1.55.0",
+"@axe-core/playwright": "^4.10.2"
+}
 }
